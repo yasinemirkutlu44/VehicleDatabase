@@ -13,7 +13,7 @@ public class Program {
         while(menu)
         {
             int choice;
-            System.out.println("Menu:\n1.Add shit\n2.Remove shit\n3.See shit\n4.Close this fuck");
+            System.out.println("Menu:\n1.Veri Girişinde Bulun\n2.Veri Listele\n3.Veri Güncelle\n4.Cıkış\nSecim:");
             try
             {
                 choice = input.nextInt();
@@ -42,7 +42,7 @@ public class Program {
                 menu = false;
             }
             else
-                System.out.println("You shouldn't see this bitch.");
+                System.out.println("Gecersiz bir deger girdiniz.Lütfen dogru bir deger giriniz.");
         }
     }
     
