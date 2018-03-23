@@ -1,6 +1,6 @@
 package project;
 
-public class Bicycle implements LandVehicle{
+public class Bicycle extends LandVehicle{
     private String brand = "";
     private float speed = 0f;
     private int capacity = 1;
@@ -9,21 +9,33 @@ public class Bicycle implements LandVehicle{
     private int productionDate = 0;
     private String colour = "";
     private static int ID=0;
+    private int selfID;
 
-    public Bicycle() { ID++; }
+    public Bicycle() { ID++; this.selfID = ID; }
 
-    public Bicycle(String brand, int capacity, float price, int productionDate, String colour) {
+    public Bicycle(String brand, float speed, int capacity, float price, int productionDate, String colour) {
         this.brand = brand;
+        this.speed = speed;
         this.capacity = capacity;
         this.price = price;
         this.productionDate = productionDate;
         this.colour = colour;
         ID++;
+        this.selfID = ID;
     }
 
-    public static int getID() {
-        return ID;
+    @Override
+    public String toString(){
+        return "Bicycle" + selfID;
     }
+
+    @Override
+    public int getID() {
+        return this.selfID;
+    }
+
+    @Override
+    public int getGeneralID() {return this.ID; }
 
     @Override
     public void accelerate(float amount)

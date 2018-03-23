@@ -1,4 +1,4 @@
 package project;
 
-public interface LandVehicle extends Vehicle {
+public abstract class LandVehicle implements Vehicle {
 }

@@ -9,21 +9,33 @@ public class Ship implements SeaVehicle{
     private int productionDate = 0;
     private String colour = "";
     private static int ID=0;
+    private int selfID;
 
-    public Ship() { ID++; }
+    public Ship() { ID++; this.selfID = ID; }
 
-    public Ship(String brand, int capacity, float price, int productionDate, String colour) {
+    public Ship(String brand, float speed, int capacity, float price, int productionDate, String colour) {
         this.brand = brand;
+        this.speed = speed;
         this.capacity = capacity;
         this.price = price;
         this.productionDate = productionDate;
         this.colour = colour;
         ID++;
+        this.selfID = ID;
     }
 
-    public static int getID() {
-        return ID;
+    @Override
+    public String toString(){
+        return "Ship" + selfID;
     }
+
+    @Override
+    public int getID() {
+        return this.selfID;
+    }
+
+    @Override
+    public int getGeneralID() {return this.ID; }
 
     @Override
     public void accelerate(float amount)

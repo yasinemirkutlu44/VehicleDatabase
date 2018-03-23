@@ -4,27 +4,40 @@ public class Plane implements AirVehicle {
     private String brand = "";
     private float speed = 0f;
     private int capacity = 30;
-    private int wheel = 6;
+    private int wheel = 3;
     private float price = 0f;
     private int productionDate = 0;
     private String colour = "";
     private boolean onFlight = false;
     private static int ID=0;
+    private int selfID;
 
-    public Plane() { ID++; }
+    public Plane() { ID++; this.selfID = ID; }
 
-    public Plane(String brand, int capacity, float price, int productionDate, String colour) {
+    public Plane(String brand, float speed, int capacity, float price, int productionDate, String colour, boolean onFlight) {
         this.brand = brand;
+        this.speed = speed;
         this.capacity = capacity;
         this.price = price;
         this.productionDate = productionDate;
         this.colour = colour;
+        this.onFlight = onFlight;
         ID++;
+        this.selfID = ID;
     }
 
-    public static int getID() {
-        return ID;
+    @Override
+    public String toString(){
+        return "Plane" + selfID;
     }
+
+    @Override
+    public int getID() {
+        return this.selfID;
+    }
+
+    @Override
+    public int getGeneralID() {return this.ID; }
 
     @Override
     public boolean isFlying()

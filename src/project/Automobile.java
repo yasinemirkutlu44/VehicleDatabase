@@ -1,6 +1,6 @@
 package project;
 
-public class Automobile implements LandVehicle{
+public class Automobile extends LandVehicle{
     private String brand = "";
     private float speed = 0f;
     private int capacity = 4;
@@ -8,22 +8,36 @@ public class Automobile implements LandVehicle{
     private float price = 0f;
     private int productionDate = 0;
     private String colour = "";
+    private String fuel = "Gasoline";
     private static int ID=0;
+    private int selfID;
 
-    public Automobile() { ID++; }
+    public Automobile() { ID++; selfID=ID; }
 
-    public Automobile(String brand, int capacity, float price, int productionDate, String colour) {
+    public Automobile(String brand, float speed, int capacity, float price, int productionDate, String colour, String fuel) {
         this.brand = brand;
+        this.speed = speed;
         this.capacity = capacity;
         this.price = price;
         this.productionDate = productionDate;
         this.colour = colour;
+        this.fuel = fuel;
         ID++;
+        this.selfID = ID;
     }
 
-    public static int getID() {
-        return ID;
+    @Override
+    public String toString(){
+        return "Automobile" + selfID;
     }
+
+    @Override
+    public int getID() {
+        return this.selfID;
+    }
+
+    @Override
+    public int getGeneralID() {return this.ID; }
 
     @Override
     public void accelerate(float amount)
@@ -106,6 +120,14 @@ public class Automobile implements LandVehicle{
     @Override
     public void setColour(String colour) {
         this.colour = colour;
+    }
+
+    public String getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(String fuel) {
+        this.fuel = fuel;
     }
 
     @Override

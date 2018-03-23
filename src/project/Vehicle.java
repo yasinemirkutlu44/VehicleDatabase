@@ -5,6 +5,9 @@ public interface Vehicle {
     public void decelerate(float amount);
     public void stop ();
 
+    public int getID();
+    public int getGeneralID();
+    
     public String getBrand();
     public void setBrand(String brand);
     public float getSpeed();
