@@ -9,7 +9,7 @@ public class Hydroplane implements AirVehicle,SeaVehicle {
     private int productionDate = 0;
     private String colour = "";
     private boolean onFlight = false;
-    private static int ID=0;
+    private static int ID = 0;
     private int selfID;
 
     public Hydroplane() { ID++; this.selfID = ID; }
@@ -37,7 +37,7 @@ public class Hydroplane implements AirVehicle,SeaVehicle {
     }
 
     @Override
-    public int getGeneralID() {return this.ID; }
+    public int getGeneralID() { return ID; }
 
     @Override
     public boolean isFlying()

@@ -3,12 +3,12 @@ package project;
 public class Ship implements SeaVehicle{
     private String brand = "";
     private float speed = 0f;
-    private int capacity = 0;
+    private int capacity = 10;
     private int wheel = 0;
     private float price = 0f;
     private int productionDate = 0;
     private String colour = "";
-    private static int ID=0;
+    private static int ID = 0;
     private int selfID;
 
     public Ship() { ID++; this.selfID = ID; }
@@ -35,7 +35,7 @@ public class Ship implements SeaVehicle{
     }
 
     @Override
-    public int getGeneralID() {return this.ID; }
+    public int getGeneralID() { return ID; }
 
     @Override
     public void accelerate(float amount)

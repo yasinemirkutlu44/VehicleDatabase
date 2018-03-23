@@ -3,13 +3,13 @@ package project;
 public class Plane implements AirVehicle {
     private String brand = "";
     private float speed = 0f;
-    private int capacity = 30;
+    private int capacity = 50;
     private int wheel = 3;
     private float price = 0f;
     private int productionDate = 0;
     private String colour = "";
     private boolean onFlight = false;
-    private static int ID=0;
+    private static int ID = 0;
     private int selfID;
 
     public Plane() { ID++; this.selfID = ID; }
@@ -37,7 +37,7 @@ public class Plane implements AirVehicle {
     }
 
     @Override
-    public int getGeneralID() {return this.ID; }
+    public int getGeneralID() { return ID; }
 
     @Override
     public boolean isFlying()

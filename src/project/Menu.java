@@ -178,6 +178,13 @@ public class Menu extends JFrame {
                     textField4.setText("4");
                     clearPanels(false,true);
                 }
+                else if (!automobileRadioButton.isSelected())
+                {
+                    clearTextBoxes();
+                    textField4.setText("4");
+                    clearPanels(false,true);
+                    list1.clearSelection();
+                }
             }
         });
         bicycleRadioButton.addActionListener(new ActionListener() {
@@ -186,6 +193,13 @@ public class Menu extends JFrame {
                 if (list1.isSelectionEmpty()) {
                     textField4.setText("2");
                     clearPanels(false,false);
+                }
+                else if (!bicycleRadioButton.isSelected())
+                {
+                    clearTextBoxes();
+                    textField4.setText("2");
+                    clearPanels(false,false);
+                    list1.clearSelection();
                 }
             }
         });
@@ -196,6 +210,13 @@ public class Menu extends JFrame {
                     textField4.setText("3");
                     clearPanels(true,false);
                 }
+                else if (!planeRadioButton.isSelected())
+                {
+                    clearTextBoxes();
+                    textField4.setText("3");
+                    clearPanels(true,false);
+                    list1.clearSelection();
+                }
             }
         });
         hydroplaneRadioButton.addActionListener(new ActionListener() {
@@ -205,14 +226,29 @@ public class Menu extends JFrame {
                     textField4.setText("3");
                     clearPanels(true,false);
                 }
+                else if (!hydroplaneRadioButton.isSelected())
+                {
+                    clearTextBoxes();
+                    textField4.setText("3");
+                    clearPanels(true,false);
+                    list1.clearSelection();
+                }
             }
         });
         shipRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (list1.isSelectionEmpty()) {
+                    System.out.println("Selection is empty.");
                     textField4.setText("0");
                     clearPanels(false,false);
+                }
+                else
+                {
+                    clearTextBoxes();
+                    textField4.setText("0");
+                    clearPanels(false,false);
+                    list1.setSelectedIndex(-1);
                 }
             }
         });
@@ -287,5 +323,15 @@ public class Menu extends JFrame {
         this.fuelTypeText.setVisible(fuel);
 
         this.pack();
+    }
+
+    private void clearTextBoxes()
+    {
+        this.textField1.setText("");
+        this.textField2.setText("");
+        this.textField3.setText("");
+        this.textField5.setText("");
+        this.textField6.setText("");
+        this.textField7.setText("");
     }
 }

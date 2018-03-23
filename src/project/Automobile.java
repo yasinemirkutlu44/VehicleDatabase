@@ -8,8 +8,8 @@ public class Automobile extends LandVehicle{
     private float price = 0f;
     private int productionDate = 0;
     private String colour = "";
-    private String fuel = "Gasoline";
-    private static int ID=0;
+    private String fuel = "";
+    private static int ID = 0;
     private int selfID;
 
     public Automobile() { ID++; selfID=ID; }
@@ -37,7 +37,7 @@ public class Automobile extends LandVehicle{
     }
 
     @Override
-    public int getGeneralID() {return this.ID; }
+    public int getGeneralID() { return ID; }
 
     @Override
     public void accelerate(float amount)
