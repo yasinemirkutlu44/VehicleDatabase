@@ -56,10 +56,10 @@ public class Menu extends JFrame {
                     JOptionPane.showMessageDialog(addVehicleButton,"No vehicle class selected!","Error",JOptionPane.ERROR_MESSAGE);
                 else
                 {
-                    Vehicle veh = getVehicle(addVehicleButton,"add");
-                    vehicleList.add(veh);
-                    updateList(veh);
-                    list1.setSelectedIndex(list1.getLastVisibleIndex());
+                    Vehicle veh = getVehicle(addVehicleButton,"add"); //Generates a vehicle with the information got from text boxes.
+                    vehicleList.add(veh); //Adds newly generated vehicle to the array.
+                    updateList(veh); //Updates the array list with the new vehicle.
+                    list1.setSelectedIndex(list1.getLastVisibleIndex()); //Selects the newly added vehicle from the list.
                     JOptionPane.showMessageDialog(addVehicleButton,"Vehicle have been added!","Done",JOptionPane.INFORMATION_MESSAGE);
                 }
             }
@@ -71,9 +71,9 @@ public class Menu extends JFrame {
                     JOptionPane.showMessageDialog(updateSelectedVehicleButton,"No vehicle selected!","Error",JOptionPane.ERROR_MESSAGE);
                 else
                 {
-                    Vehicle veh = getVehicle(updateSelectedVehicleButton,"update");
-                    vehicleList.remove(list1.getSelectedIndex());
-                    vehicleList.add(list1.getSelectedIndex(),veh);
+                    Vehicle veh = getVehicle(updateSelectedVehicleButton,"update"); //Generates a vehicle with the information got from text boxes.
+                    vehicleList.remove(list1.getSelectedIndex()); //Removes the old vehicle from the list.
+                    vehicleList.add(list1.getSelectedIndex(),veh); //Adds the new vehicle into the removed one's index on the list.
                     JOptionPane.showMessageDialog(updateSelectedVehicleButton,"Vehicle have been updated!","Done",JOptionPane.INFORMATION_MESSAGE);
                 }
             }
