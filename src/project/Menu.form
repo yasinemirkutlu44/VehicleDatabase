@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="project.Menu">
-  <grid id="27dc6" binding="JPanel1" layout-manager="GridLayoutManager" row-count="7" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="JPanel1" layout-manager="GridLayoutManager" row-count="8" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="633" height="411"/>
+      <xy x="20" y="20" width="726" height="411"/>
     </constraints>
     <properties/>
-    <border type="none"/>
+    <border type="line"/>
     <children>
       <component id="bc645" class="javax.swing.JLabel">
         <constraints>
@@ -59,7 +59,7 @@
       <grid id="6c227" binding="propertyPanel" layout-manager="GridLayoutManager" row-count="12" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="1" row-span="6" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="1" row-span="7" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
@@ -72,7 +72,7 @@
               <text value="Brand"/>
             </properties>
           </component>
-          <component id="53b43" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+          <component id="53b43" class="javax.swing.JTextField" binding="brandTextField">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -80,7 +80,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="a582f" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+          <component id="a582f" class="javax.swing.JTextField" binding="speedTextField">
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -88,7 +88,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="8f386" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+          <component id="8f386" class="javax.swing.JTextField" binding="capacityTextField">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -96,7 +96,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="55764" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+          <component id="55764" class="javax.swing.JTextField" binding="wheelTextField">
             <constraints>
               <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -106,7 +106,7 @@
               <editable value="false"/>
             </properties>
           </component>
-          <component id="c02e2" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+          <component id="c02e2" class="javax.swing.JTextField" binding="priceTextField">
             <constraints>
               <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -114,7 +114,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="5f949" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+          <component id="5f949" class="javax.swing.JTextField" binding="productionDateTextField">
             <constraints>
               <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -122,7 +122,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="d0ddf" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+          <component id="d0ddf" class="javax.swing.JTextField" binding="colorTextField">
             <constraints>
               <grid row="6" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -218,7 +218,7 @@
                   <text value="isFlying"/>
                 </properties>
               </component>
-              <component id="90b6" class="javax.swing.JRadioButton" binding="trueRadioButton" default-binding="true">
+              <component id="90b6" class="javax.swing.JRadioButton" binding="trueFlyingRadioButton">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -226,7 +226,7 @@
                   <text value="True"/>
                 </properties>
               </component>
-              <component id="e8c5a" class="javax.swing.JRadioButton" binding="falseRadioButton" default-binding="true">
+              <component id="e8c5a" class="javax.swing.JRadioButton" binding="falseFlyingRadioButton">
                 <constraints>
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -254,7 +254,7 @@
                   <text value="Fuel Type"/>
                 </properties>
               </component>
-              <component id="3a2d2" class="javax.swing.JTextField" binding="textField8">
+              <component id="3a2d2" class="javax.swing.JTextField" binding="fuelTextField">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -268,7 +268,7 @@
       </grid>
       <vspacer id="8cfcf">
         <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
       <component id="58828" class="javax.swing.JLabel">
@@ -287,9 +287,9 @@
           <text value="Define vehicle properties"/>
         </properties>
       </component>
-      <component id="a5e42" class="javax.swing.JList" binding="list1" default-binding="true">
+      <component id="a5e42" class="javax.swing.JList" binding="listVehicleUI">
         <constraints>
-          <grid row="1" column="2" row-span="6" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="1" column="2" row-span="7" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
@@ -297,6 +297,56 @@
           <selectionMode value="0"/>
         </properties>
       </component>
+      <grid id="28648" binding="speedButtons" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="63ea9" class="javax.swing.JButton" binding="accelerateButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Accelerate"/>
+            </properties>
+          </component>
+          <component id="465a" class="javax.swing.JButton" binding="decelerateButton" default-binding="true">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Decelerate"/>
+            </properties>
+          </component>
+          <component id="3c219" class="javax.swing.JButton" binding="stopButton" default-binding="true">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Stop"/>
+            </properties>
+          </component>
+          <component id="ffaa4" class="javax.swing.JTextField" binding="accelerateTextField">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="35" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="d2c7f" class="javax.swing.JTextField" binding="decelerateTextField">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="35" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+        </children>
+      </grid>
     </children>
   </grid>
   <buttonGroups>

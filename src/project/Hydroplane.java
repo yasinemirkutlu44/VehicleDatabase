@@ -21,7 +21,7 @@ public class Hydroplane implements AirVehicle,SeaVehicle {
         this.price = price;
         this.productionDate = productionDate;
         this.colour = colour;
-        this.onFlight = onFlight;
+        this.onFlight = !(speed == 0) && onFlight;
         ID++;
         this.selfID = ID;
     }
@@ -46,29 +46,31 @@ public class Hydroplane implements AirVehicle,SeaVehicle {
     }
 
     @Override
-    public void accelerate(float amount)
+    public void setFlight(boolean onFlight)
     {
-        if (onFlight)
-            speed+=amount;
-        else {
-            onFlight = true;
-            speed += amount;
-        }
+        this.onFlight = !(this.speed == 0) && onFlight;
     }
 
     @Override
-    public void decelerate(float amount)
+    public boolean accelerate(float amount)
     {
-        if (onFlight) {
-            speed -= amount;
-            if (speed <= 0) onFlight = false;
-        }
+        speed += amount;
+        return true;
     }
 
     @Override
-    public void stop ()
+    public boolean decelerate(float amount)
     {
-        if(!onFlight) speed=0;
+        speed -= amount;
+        return true;
+    }
+
+    @Override
+    public boolean stop ()
+    {
+        if (onFlight) return false;
+        speed = 0;
+        return true;
     }
 
     @Override
@@ -87,6 +89,12 @@ public class Hydroplane implements AirVehicle,SeaVehicle {
     }
 
     @Override
+    public void setSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+
+    @Override
     public int getCapacity() {
         return capacity;
     }
@@ -102,7 +110,7 @@ public class Hydroplane implements AirVehicle,SeaVehicle {
     }
 
     @Override
-    public void setWheel(short wheel) {
+    public void setWheel(int wheel) {
         this.wheel = wheel;
     }
 
@@ -122,7 +130,7 @@ public class Hydroplane implements AirVehicle,SeaVehicle {
     }
 
     @Override
-    public void setProductionDate(short productionDate) {
+    public void setProductionDate(int productionDate) {
         this.productionDate = productionDate;
     }
 

@@ -38,21 +38,24 @@ public class Bicycle extends LandVehicle{
     public int getGeneralID() { return ID; }
 
     @Override
-    public void accelerate(float amount)
+    public boolean accelerate(float amount)
     {
         speed+=amount;
+        return true;
     }
 
     @Override
-    public void decelerate(float amount)
+    public boolean decelerate(float amount)
     {
         speed-=amount;
+        return true;
     }
 
     @Override
-    public void stop ()
+    public boolean stop ()
     {
-        if(speed!=0) speed=0;
+        speed=0;
+        return true;
     }
 
     @Override
@@ -71,6 +74,12 @@ public class Bicycle extends LandVehicle{
     }
 
     @Override
+    public void setSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+
+    @Override
     public int getCapacity() {
         return capacity;
     }
@@ -86,7 +95,7 @@ public class Bicycle extends LandVehicle{
     }
 
     @Override
-    public void setWheel(short wheel) {
+    public void setWheel(int wheel) {
         this.wheel = wheel;
     }
 
@@ -106,7 +115,7 @@ public class Bicycle extends LandVehicle{
     }
 
     @Override
-    public void setProductionDate(short productionDate) {
+    public void setProductionDate(int productionDate) {
         this.productionDate = productionDate;
     }
 
