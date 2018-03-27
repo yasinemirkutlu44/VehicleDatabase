@@ -1,6 +1,6 @@
 package project;
 
 public interface AirVehicle extends Vehicle {
-    public boolean isFlying();
-    public void setFlight(boolean onFlight);
+    boolean isFlying();
+    void setFlight(boolean onFlight);
 }

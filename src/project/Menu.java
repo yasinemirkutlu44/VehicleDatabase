@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Menu extends JFrame {
 
     private static ArrayList<Vehicle> vehicleList = new ArrayList<>();
-    private static String fileName = "DATA_VEHICLE.txt";
+    private static final String fileName = "DATA_VEHICLE.txt";
 
     private JRadioButton automobileRadioButton;
     private JRadioButton bicycleRadioButton;
@@ -33,7 +33,7 @@ public class Menu extends JFrame {
     private JRadioButton falseFlyingRadioButton;
     private javax.swing.JPanel JPanel1;
     private JButton updateSelectedVehicleButton;
-    private DefaultListModel<Vehicle> listModel = new DefaultListModel<Vehicle>();
+    private DefaultListModel<Vehicle> listModel = new DefaultListModel<>();
     private JList<Vehicle> listVehicleUI;
     private JPanel propertyPanel;
     private JPanel flyingTrueFalseCheck;

@@ -1,26 +1,26 @@
 package project;
 
 public interface Vehicle {
-    public boolean accelerate(float amount);
-    public boolean decelerate(float amount);
-    public boolean stop ();
+    boolean accelerate(float amount);
+    boolean decelerate(float amount);
+    boolean stop();
 
-    public int getID();
-    public int getGeneralID();
+    int getID();
+    int getGeneralID();
     
-    public String getBrand();
-    public void setBrand(String brand);
-    public float getSpeed();
-    public void setSpeed(float speed);
-    public int getCapacity();
-    public void setCapacity(int capacity);
-    public int getWheel();
-    public void setWheel(int wheel);
-    public float getPrice();
-    public void setPrice(float price);
-    public int getProductionDate();
-    public void setProductionDate(int productionDate);
-    public String getColour();
-    public void setColour(String colour);
-    public String getFileWriter();
+    String getBrand();
+    void setBrand(String brand);
+    float getSpeed();
+    void setSpeed(float speed);
+    int getCapacity();
+    void setCapacity(int capacity);
+    int getWheel();
+    void setWheel(int wheel);
+    float getPrice();
+    void setPrice(float price);
+    int getProductionDate();
+    void setProductionDate(int productionDate);
+    String getColour();
+    void setColour(String colour);
+    String getFileWriter();
 }
