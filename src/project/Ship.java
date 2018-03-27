@@ -30,6 +30,19 @@ public class Ship implements SeaVehicle{
     }
 
     @Override
+    public String getFileWriter()
+    {
+        return "Ship" + selfID +
+                "," + brand +
+                "," + speed +
+                "," + capacity +
+                "," + wheel +
+                "," + price +
+                "," + productionDate +
+                "," + colour;
+    }
+
+    @Override
     public int getID() {
         return this.selfID;
     }

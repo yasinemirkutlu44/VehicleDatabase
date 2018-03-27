@@ -30,6 +30,19 @@ public class Bicycle extends LandVehicle{
     }
 
     @Override
+    public String getFileWriter()
+    {
+        return "Bicycle" + selfID +
+                "," + brand +
+                "," + speed +
+                "," + capacity +
+                "," + wheel +
+                "," + price +
+                "," + productionDate +
+                "," + colour;
+    }
+
+    @Override
     public int getID() {
         return this.selfID;
     }

@@ -4,7 +4,9 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 //160202103 Tarık BİR
 //150202040 Yasin Emir KUTLU
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 public class Menu extends JFrame {
 
     private static ArrayList<Vehicle> vehicleList = new ArrayList<>();
+    private static String fileName = "DATA_VEHICLE.txt";
 
     private JRadioButton automobileRadioButton;
     private JRadioButton bicycleRadioButton;
@@ -42,6 +45,7 @@ public class Menu extends JFrame {
     private JPanel speedButtons;
     private JTextField accelerateTextField;
     private JTextField decelerateTextField;
+    private JButton removeSelectedVehicleButton;
     private ButtonGroup isFlying;
     private ButtonGroup VehicleClasses;
 
@@ -67,9 +71,10 @@ public class Menu extends JFrame {
                     Vehicle veh = getVehicle(addVehicleButton); //Generates a vehicle with the information got from text boxes.
                     if (veh == null) return; //End prematurely to deny exception generation.
                     vehicleList.add(veh); //Adds newly generated vehicle to the array.
-                    updateList(veh); //Updates the array list with the new vehicle.
+                    listModel.addElement(veh); //Updates the array list with the new vehicle.
                     pack();
                     listVehicleUI.setSelectedIndex(listVehicleUI.getLastVisibleIndex()); //Selects the newly added vehicle from the list.
+                    writeFile(fileName);
                     JOptionPane.showMessageDialog(addVehicleButton,"Vehicle have been added!","Done",JOptionPane.INFORMATION_MESSAGE);
                 }
             }
@@ -108,7 +113,23 @@ public class Menu extends JFrame {
                         JOptionPane.showMessageDialog(updateSelectedVehicleButton,"Cannot add vehicle!\n" + ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
                         return;
                     }
+                    writeFile(fileName);
                     JOptionPane.showMessageDialog(updateSelectedVehicleButton,"Vehicle have been updated!","Done",JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
+        removeSelectedVehicleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (listVehicleUI.isSelectionEmpty())
+                    JOptionPane.showMessageDialog(removeSelectedVehicleButton,"No vehicle selected!","Error",JOptionPane.ERROR_MESSAGE);
+                else
+                {
+                    vehicleList.remove(listVehicleUI.getSelectedIndex());
+                    listModel.removeElementAt(listVehicleUI.getSelectedIndex());
+                    clearTextBoxes();
+                    writeFile(fileName);
+                    JOptionPane.showMessageDialog(removeSelectedVehicleButton,"Vehicle have been removed!","Done",JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
@@ -229,7 +250,7 @@ public class Menu extends JFrame {
                     if (veh == null) return; //End prematurely to deny exception generation.
                     try
                     {
-                        if (!veh.accelerate(Float.parseFloat(accelerateTextField.getText()))) throw new Exception("Function error!");
+                        if (!veh.accelerate(Float.parseFloat(accelerateTextField.getText()))) throw new Exception("Functional error!");
                     }
                     catch (Exception ex)
                     {
@@ -237,6 +258,7 @@ public class Menu extends JFrame {
                         return;
                     }
                     speedTextField.setText(""+veh.getSpeed());
+                    writeFile(fileName);
                 }
             }
         });
@@ -251,7 +273,7 @@ public class Menu extends JFrame {
                     if (veh == null) return; //End prematurely to deny exception generation.
                     try
                     {
-                        if (!veh.decelerate(Float.parseFloat(decelerateTextField.getText()))) throw new Exception("Function error!");
+                        if (!veh.decelerate(Float.parseFloat(decelerateTextField.getText()))) throw new Exception("Functional error!");
                     }
                     catch (Exception ex)
                     {
@@ -259,6 +281,7 @@ public class Menu extends JFrame {
                         return;
                     }
                     speedTextField.setText(""+veh.getSpeed());
+                    writeFile(fileName);
                 }
             }
         });
@@ -273,14 +296,15 @@ public class Menu extends JFrame {
                     if (veh == null) return; //End prematurely to deny exception generation.
                     try
                     {
-                        if (!veh.stop()) throw new Exception("Function error!");
+                        if (!veh.stop()) throw new Exception("Functional error!");
                     }
                     catch (Exception ex)
                     {
-                        JOptionPane.showMessageDialog(stopButton,"Cannot accelerate!\n" + ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(stopButton,"Can't stop!\n" + ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
                         return;
                     }
                     speedTextField.setText(""+veh.getSpeed());
+                    writeFile(fileName);
                 }
             }
         });
@@ -290,22 +314,10 @@ public class Menu extends JFrame {
         Menu menu = new Menu(); //Create a new menu window.
         menu.setVisible(true); //Set it visible.
         menu.listVehicleUI.setModel(menu.listModel); //Set the list model to call type.
-
-        vehicleList.add(new Automobile("BMW", 73f,4, 450f, 2015, "RED","Gasoline"));
-        vehicleList.add(new Automobile("MERCEDES", 120f,2, 600f, 2016, "BLACK","Diesel"));
-        vehicleList.add(new Automobile("TOYOTA", 45f,4, 10f, 2012, "WHITE","LPG"));
-        vehicleList.add(new Bicycle("BIANCHI",0f,1,0.1f,2007,"YELLOW"));
-        vehicleList.add(new Plane("BOEING",140f, 180, 3200f, 2017, "WHITE",true));
-
-        for (int i = 0; i < vehicleList.toArray().length; i++) {
-            menu.updateList((Vehicle) vehicleList.toArray()[i]);
+        readFile(fileName);
+        for (Vehicle v: vehicleList) {
+            menu.listModel.addElement(v);
         }
-    }
-
-    private void updateList(Vehicle veh)
-    {
-        /*Adds an element to the list.*/
-        listModel.addElement(veh);
     }
 
     private void updatePanels(boolean flying, boolean fuel)
@@ -384,5 +396,78 @@ public class Menu extends JFrame {
             return null;
         }
         return veh;
+    }
+
+    private static Vehicle getVehicle(String s)
+    {
+        /*Gets a new vehicle from a string. Handles exceptions, doesn't return any error generated.*/
+        Vehicle veh;
+        String brand;
+        float speed;
+        int capacity;
+        float price;
+        int productionDate;
+        String colour;
+        String fuel="";
+        boolean isFlying=true;
+        String[] properties = s.split(",");
+        String type = properties[0];
+        try
+        {
+            brand = properties[1];
+            speed = Float.parseFloat(properties[2]);
+            capacity = Integer.parseInt(properties[3]);
+            price = Float.parseFloat(properties[5]);
+            productionDate = Integer.parseInt(properties[6]);
+            colour = properties[7];
+            if (type.contains("Automobile"))
+                fuel = properties[8];
+            else if (type.contains("Plane") || type.contains("Hydroplane"))
+                isFlying = Boolean.valueOf(properties[8]);
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+            return null;
+        }
+        if (type.contains("Automobile"))
+            veh = new Automobile(brand,speed,capacity,price,productionDate,colour,fuel);
+        else if (type.contains("Bicycle"))
+            veh = new Bicycle(brand,speed,capacity,price,productionDate,colour);
+        else if (type.contains("Plane"))
+            veh = new Plane(brand,speed,capacity,price,productionDate,colour,isFlying);
+        else if (type.contains("Hydroplane"))
+            veh = new Hydroplane(brand,speed,capacity,price,productionDate,colour,isFlying);
+        else if (type.contains("Ship"))
+            veh = new Ship(brand,speed,capacity,price,productionDate,colour);
+        else
+        {
+            return null;
+        }
+        System.out.println(veh.getFileWriter());
+        return veh;
+    }
+
+    private static void readFile(String filename)
+    {
+        File dataFile = new File(filename);
+        try (Scanner input = new Scanner(dataFile)) {
+            while(input.hasNextLine()){
+                vehicleList.add(getVehicle(input.nextLine()));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void writeFile(String filename)
+    {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
+            for (Vehicle veh : vehicleList) {
+                bw.write(veh.getFileWriter()+"\r\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

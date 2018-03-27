@@ -32,6 +32,20 @@ public class Automobile extends LandVehicle{
     }
 
     @Override
+    public String getFileWriter()
+    {
+        return "Automobile" + selfID +
+                "," + brand +
+                "," + speed +
+                "," + capacity +
+                "," + wheel +
+                "," + price +
+                "," + productionDate +
+                "," + colour +
+                "," + fuel;
+    }
+
+    @Override
     public int getID() {
         return this.selfID;
     }

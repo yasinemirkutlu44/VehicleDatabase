@@ -22,4 +22,5 @@ public interface Vehicle {
     public void setProductionDate(int productionDate);
     public String getColour();
     public void setColour(String colour);
+    public String getFileWriter();
 }

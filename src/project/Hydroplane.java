@@ -32,6 +32,20 @@ public class Hydroplane implements AirVehicle,SeaVehicle {
     }
 
     @Override
+    public String getFileWriter()
+    {
+        return "Hydroplane" + selfID +
+                "," + brand +
+                "," + speed +
+                "," + capacity +
+                "," + wheel +
+                "," + price +
+                "," + productionDate +
+                "," + colour +
+                "," + onFlight;
+    }
+
+    @Override
     public int getID() {
         return this.selfID;
     }
