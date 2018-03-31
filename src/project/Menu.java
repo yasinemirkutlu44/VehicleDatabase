@@ -110,7 +110,7 @@ public class Menu extends JFrame {
                     }
                     catch (Exception ex)
                     {
-                        JOptionPane.showMessageDialog(updateSelectedVehicleButton,"Cannot add vehicle!\n" + ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(updateSelectedVehicleButton,"Cannot update vehicle!\n" + ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
                         return;
                     }
                     writeFile(fileName);
@@ -444,7 +444,7 @@ public class Menu extends JFrame {
         {
             return null;
         }
-        System.out.println(veh.getFileWriter());
+        //System.out.println(veh.getFileWriter());
         return veh;
     }
 
